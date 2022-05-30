@@ -1,0 +1,86 @@
+<br>
+<br>
+<br>
+<div class="container">
+    <ngx-spinner bdOpacity=0.5 bdColor="rgba(51,51,51,0.85)" size="medium" color="#fff" type="line-scale"
+        [fullScreen]="true">
+        <p style="color: white"> Opening form... </p>
+    </ngx-spinner>
+    <div class="col-md-12 ml-auto">
+        <!-- Social registration form-->
+        <div class="card my-5">
+            <div class="card-body p-5 text-center">
+                <div class="h3 font-weight-light">Job posting</div>
+            </div>
+            <hr class="my-0" />
+            <div class="card-body p-5">
+                <!-- Login form-->
+                <form [formGroup]="postingForm" (ngSubmit)="putJob()">
+                    <!-- Company Name -->
+                    <div class="form-group">
+                        <label class="text-gray-600 small" for="companyNameExample">Company Name</label>
+                        <input disabled class="form-control form-control-solid" type="text" formControlName="companyName" [(ngModel)]="tempCompanyName"  />
+                    </div>
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label class="text-gray-600 small" for="emailExample">Email</label>
+                        <input disabled class="form-control form-control-solid" type="text" formControlName="email" [(ngModel)]="emailValue"/>
+                    </div>
+                    <!-- Form Row-->
+                    <!-- Form Group (Job title)-->
+                    <div class="form-group">
+                        <label class="text-gray-600 small" for="jobTitleExample">Job title</label>
+                        <input class="form-control form-control-solid" type="text" formControlName="positionName" [(ngModel)]="tempPositionName" />
+                    </div>
+                    <!-- Form Group (Category)-->
+                    <div class="form-group">
+                        <label class="text-gray-600 small" for="categoryExample">Category</label>
+                        <select class="form-control form-control-solid" type="text" formControlName="category" [(ngModel)]="tempCategoryName">
+                            <option>Backend</option>
+                            <option>Frontend</option>
+                            <option>Fullstack</option>
+                            <option>DevOps</option>
+                            <option>Analyst</option>
+                            <option>Support</option>
+                        </select>
+                    </div>
+                    <!-- Form Group (Requirements) -->
+                    <div class="form-group">
+                        <label class="text-gray-600 small" for="companyNameExample">Requirements</label>
+                        <ng-multiselect-dropdown class="container" [placeholder]="' '" [settings]="dropdownSettings"
+                            [data]="dropdownList" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
+                            formControlName="requirements" [(ngModel)]="tempRequirementsArray">
+                        </ng-multiselect-dropdown>
+                    </div>
+                    <!-- Form Group (Localization)-->
+                    <div class="form-group">
+                        <label class="text-gray-600 small" for="emailExample">Localization</label>
+                        <input class="form-control form-control-solid" type="text" formControlName="localization" [(ngModel)]="tempLocalization" />
+                    </div>
+                    <!-- Form Group (Job Description)-->
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Job description (Tasks, responsibilities, etc.)</label>
+                        <textarea class="form-control form-control-solid" id="exampleFormControlTextarea1" rows="9"
+                            formControlName="description" [(ngModel)]="tempDescription"></textarea>
+                    </div>
+                    <!-- Form Group (salaryMin)-->
+                    <div class="form-group">
+                        <label class="text-gray-600 small">Minimum salary</label>
+                        <input class="form-control form-control-solid" type="number" formControlName="minSalary" [(ngModel)]="tempMinSalary" />
+                    </div>
+                    <!-- Form Group (salaryMax)-->
+                    <div class="form-group">
+                        <label class="text-gray-600 small">Maximum salary</label>
+                        <input class="form-control form-control-solid" type="number" formControlName="maxSalary" [(ngModel)]="tempMaxSalary" />
+                    </div>
+                    <!-- Form Group (form submission)-->
+                    <div class="form-group d-flex align-items-center justify-content-between">
+                        <button class="btn btn-primary" style="width: 100%;">Change posting</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>

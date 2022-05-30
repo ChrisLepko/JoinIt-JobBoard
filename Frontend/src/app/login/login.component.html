@@ -1,0 +1,50 @@
+<br><br><br>
+<div class="container">
+    <div style="position: relative;">
+        <ngx-spinner bdOpacity=0.5 bdColor="rgba(51,51,51,0.85)" size="medium" color="#fff" type="line-scale"
+            [fullScreen]="true">
+            <p style="color: white"> Opening connection to our database... </p>
+        </ngx-spinner>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <img class="img-fluid-login" src="../../assets/img/illustrations/creativity.svg" />
+        </div>
+        <div class="col-md-6 ml-auto">
+            <!-- Social login form-->
+            <div class="card my-5">
+                <div class="card-body p-5 text-center">
+                    <div class="h3 font-weight-light">Sign In</div>
+                </div>
+                <hr class="my-0" />
+                <div class="card-body p-5">
+                    <!-- Login form-->
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <!-- Form Group (email address)-->
+                        <div class="form-group">
+                            <label class="text-gray-600 small" for="emailExample">Email address</label>
+                            <input class="form-control form-control-solid" type="text" formControlName="email" />
+                        </div>
+                        <!-- Form Group (password)-->
+                        <div class="form-group">
+                            <label class="text-gray-600 small" for="passwordExample">Password</label>
+                            <input class="form-control form-control-solid" type="password" formControlName="password" />
+                        </div>
+                        <br>
+                        <!-- Form Group (login box)-->
+                        <div class="form-group d-flex align-items-center justify-content-between mb-0">
+                            <button class="btn btn-primary" style="width: 100%;">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <hr class="my-0" />
+                <div class="card-body px-5 py-4">
+                    <div class="small text-center">
+                        New user?
+                        <a routerLink="/sign-up">Create an account!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

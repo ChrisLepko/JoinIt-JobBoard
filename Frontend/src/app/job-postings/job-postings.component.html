@@ -1,0 +1,59 @@
+<section class="bg-white py-10">
+    <div class="container">
+        <div style="position: relative;">
+            <ngx-spinner bdOpacity=0.5 bdColor="rgba(51,51,51,0.85)" size="medium" color="#fff" type="line-scale"
+                [fullScreen]="true">
+                <p style="color: white"> Opening connection to our database... </p>
+            </ngx-spinner>
+        </div>
+        <div class="row justify-content-center" *ngIf="postings.length > 0">
+            <div class="col-lg-10">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h2 class="mb-0">Job offers</h2>
+                    <div class="badge badge-primary-soft text-primary badge-marketing">{{ postings.length }} Postings
+                    </div>
+                </div>
+                <hr class="mb-0" />
+                <div class="card rounded-left border-left-lg border-primary
+                lift mb-4 mt-4" *ngFor="let tempPosting of postings; index as i;">
+                    <div class="row no-gutters">
+                        <div class="col-md-2 ml-4 mt-auto mb-auto" *ngIf="tempPosting.pic">
+                            <img class="img-fluid" src="data:image/jpeg;base64,{{ tempPosting.pic }}">
+                        </div>
+                        <div class="col-md-2 ml-4 mt-auto mb-auto" *ngIf="!tempPosting.pic">
+                            <img class="img-fluid" src="./../../assets/img/default-company-logo.png"
+                                style="width: 50%; height: 50%;">
+                        </div>
+                        <div class="col-md-3">
+                            <a routerLink="/posting-details/{{ tempPosting.id }}" style="text-decoration: none;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ tempPosting.positionName }}</h5>
+                                    <p class="card-text">{{ tempPosting.localization }}</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-1" style="margin-top: auto; margin-bottom: auto; margin-left: 35px;"
+                            *ngFor="let requirement of (tempRequirementsArray[i].length < 3 ? tempRequirementsArray[i] : tempRequirementsArray[i].slice(0, 2));">
+                            <button class="btn btn-outline-primary rounded-0" style="width: 100px;">{{ requirement
+                                }}</button>
+                        </div>
+                        <div class="col-md-3 ml-auto" style="margin-top: auto; margin-bottom: auto;">
+                            <p class="text-uppercase-expanded text-success">
+                                {{ tempPosting.minSalary }} zł - {{ tempPosting.maxSalary }} zł
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center" *ngIf="postings.length == 0">
+            <i class="fas fa-search-minus" style="height: 50px; width: 50px;"></i>
+            <div class="col-lg-8">
+                <h1 class="page-header-title mb-3">No current open positions for your search</h1>
+                <a routerLink="/board">
+                    <p class="page-header-text">Go back to all job postings</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

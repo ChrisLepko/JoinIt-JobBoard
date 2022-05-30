@@ -1,0 +1,93 @@
+<br><br><br>
+<div class="container">
+    <div style="position: relative;">
+        <ngx-spinner bdOpacity=0.5 bdColor="rgba(51,51,51,0.85)" size="medium" color="#fff" type="line-scale"
+            [fullScreen]="true">
+            <p style="color: white"> Opening connection to our database... </p>
+        </ngx-spinner>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <img class="img-fluid-signup" src="../../assets/img/illustrations/at-work.svg" />
+        </div>
+        <div class="col-md-6 ml-auto">
+            <!-- Social registration form-->
+            <div class="card my-5">
+                <div class="card-body p-5 text-center">
+                    <div class="h3 font-weight-light">Create an Account</div>
+                </div>
+                <hr class="my-0" />
+                <div class="card-body p-5">
+                    <!-- Login form-->
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <!-- Company Name -->
+                        <div class="form-group">
+                            <label class="text-gray-600 small" for="companyNameExample">Company Name</label>
+                            <input class="form-control form-control-solid" type="text" formControlName="name" />
+                        </div>
+                        <!-- Form Row-->
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <!-- Form Group (first name)-->
+                                <div class="form-group">
+                                    <label class="text-gray-600 small" for="firstNameExample">First name</label>
+                                    <input class="form-control form-control-solid" type="text"
+                                        formControlName="firstName" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Form Group (last name)-->
+                                <div class="form-group">
+                                    <label class="text-gray-600 small" for="lastNameExample">Last name</label>
+                                    <input class="form-control form-control-solid" type="text"
+                                        formControlName="surname" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Form Group (email address)-->
+                        <div class="form-group">
+                            <label class="text-gray-600 small" for="emailExample">Email address</label>
+                            <input class="form-control form-control-solid" type="text" formControlName="email" />
+                        </div>
+                        <!-- Phone number -->
+                        <div class="form-group">
+                            <label class="text-gray-600 small" for="phoneExample">Phone Number</label>
+                            <input class="form-control form-control-solid" type="text" formControlName="phoneNumber" />
+                        </div>
+                        <!-- Form Row-->
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <!-- Form Group (choose password)-->
+                                <div class="form-group">
+                                    <label class="text-gray-600 small" for="passwordExample">Password (Min. 6
+                                        characters)</label>
+                                    <input class="form-control form-control-solid" type="password"
+                                        formControlName="password" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Form Group (form submission)-->
+                        <div class="form-group d-flex align-items-center justify-content-between">
+                            <div class="custom-control custom-control-solid custom-checkbox">
+                                <input class="custom-control-input small" id="customCheck1" type="checkbox" onchange="document.getElementById('createButton').disabled = !this.checked;" />
+                                <label class="custom-control-label mr-3" for="customCheck1">
+                                    I accept the
+                                    <a href="#!">terms &amp; conditions</a>
+                                    .
+                                </label>
+                            </div>
+                            <button class="btn btn-primary" id="createButton" disabled>Create Account</button>
+                        </div>
+                    </form>
+                </div>
+                <hr class="my-0" />
+                <div class="card-body px-5 py-4">
+                    <div class="small text-center">
+                        Have an account?
+                        <a routerLink="/login">Sign in!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

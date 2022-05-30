@@ -1,0 +1,54 @@
+<section class="bg-white py-10">
+    <div class="container">
+        <div style="position: relative;">
+            <ngx-spinner bdOpacity=0.5 bdColor="rgba(51,51,51,0.85)" size="medium" color="#fff" type="line-scale"
+                [fullScreen]="true">
+                <p style="color: white"> Opening connection to our database... </p>
+            </ngx-spinner>
+        </div>
+        <div class="row justify-content-center" *ngIf="applicants.length > 0">
+            <div class="col-lg-10">
+                <div class="d-flex align-items-center justify-content-between mt-5">
+                    <h2 class="mb-0">People applied to your company</h2>
+                    <div class="badge badge-primary-soft text-primary badge-marketing">{{ applicants.length }} Applicants
+                    </div>
+                </div>
+                <hr class="mb-0" />
+                <div class="card rounded-left border-left-lg border-primary
+                lift mb-4 mt-4" *ngFor="let tempApplicant of applicants; index as i;" (click)="inspectCV(tempApplicant.applicantEmail)">
+                    <div class="row no-gutters">
+                        <div class="col-md-2 ml-4 mt-auto mb-auto">
+                            <img class="img-fluid" src="../../assets/img/profilepic.png" style="width: 50%; height: 50%;">
+                        </div>
+                        <div class="col-md-3">
+                            <a style="text-decoration: none;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{tempApplicant.nameSurname}}</h5>
+                                    <p class="card-text">{{tempApplicant.applicantEmail}}</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-1" style="margin-top: auto; margin-bottom: auto; margin-left: 35px;">
+                        
+                        </div>
+                        <div class="col-md-3 ml-auto" style="margin-top: auto; margin-bottom: auto; margin-left: 10px; margin-right: 15px;">
+                            <button class="btn btn-primary rounded" style="width: 100px;" (click)="inspectCV(tempApplicant.applicantEmail)">Inspect CV</button>
+                            <button class="btn btn-primary rounded" style="width: 100px; margin-left: 10px;" (click)="downloadCV(tempApplicant.applicantEmail)">Download CV</button>
+                        </div>                    
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row justify-content-center" *ngIf="applicants.length == 0">
+            <i class="fas fa-search-minus" style="height: 50px; width: 50px;"></i>
+            <div class="col-lg-8">
+                <h1 class="page-header-title mb-3">No one has applied for your offers yet</h1>
+                <a routerLink="/board">
+                    <p class="page-header-text">Go back to all job postings</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,49 @@
+<section class="bg-white py-10">
+    <div class="container">
+        <div style="position: relative;">
+            <ngx-spinner bdOpacity=0.5 bdColor="rgba(51,51,51,0.85)" size="medium" color="#fff" type="line-scale"
+                [fullScreen]="true">
+                <p style="color: white"> Opening connection to our database... </p>
+            </ngx-spinner>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h2 class="mb-0 mt-4">Your Postings</h2>
+                    <div class="badge badge-primary-soft text-primary badge-marketing mt-4">{{ postings.length }}
+                        Postings
+                    </div>
+                </div>
+                <hr class="mb-0" />
+                <div class="card lift mb-4" *ngFor="let tempPosting of postings; index as i;">
+                    <div class="row no-gutters">
+                        <div class="col-md-2 ml-4 mt-auto mb-auto" *ngIf="tempPosting.pic">
+                            <img class="img-fluid" src="data:image/jpeg;base64,{{ tempPosting.pic }}">
+                        </div>
+                        <div class="col-md-2 ml-4 mt-auto mb-auto" *ngIf="!tempPosting.pic">
+                            <img class="img-fluid" src="./../../assets/img/default-company-logo.png"
+                                style="width: 50%; height: 50%;">
+                        </div>
+                        <div class="col-md-8">
+                            <a routerLink="/posting-details/{{ tempPosting.id }}" style="text-decoration: none;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ tempPosting.positionName }}</h5>
+                                    <p class="card-text">{{ tempPosting.localization }}</p>
+                                </div>
+                            </a>
+                        </div>
+                        <button class="btn btn-dark btn-icon" type="button"
+                            style="float: right; margin-right: 10px; margin-top: 30px;"
+                            routerLink="/my-postings/{{tempPosting.id}}">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button class="btn btn-red btn-icon" type="button" style="float: right; margin-top: 30px;"
+                            (click)="deletePosting(tempPosting.id)">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

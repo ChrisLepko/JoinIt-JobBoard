@@ -1,0 +1,152 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "JoinIT-UI": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/JoinIT-UI",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/assets",
+              "src/assets/img/favicon.png",
+              "src/assets/fonts/metropolis/Metropolis-Black.otf",
+              "src/assets/fonts/metropolis/Metropolis-BlackItalic.otf",
+              "src/assets/fonts/metropolis/Metropolis-Bold.otf",
+              "src/assets/fonts/metropolis/Metropolis-BoldItalic.otf",
+              "src/assets/fonts/metropolis/Metropolis-ExtraBold.otf",
+              "src/assets/fonts/metropolis/Metropolis-ExtraBoldItalic.otf",
+              "src/assets/fonts/metropolis/Metropolis-ExtraLight.otf",
+              "src/assets/fonts/metropolis/Metropolis-ExtraLightItalic.otf",
+              "src/assets/fonts/metropolis/Metropolis-Light.otf",
+              "src/assets/fonts/metropolis/Metropolis-LightItalic.otf",
+              "src/assets/fonts/metropolis/Metropolis-Medium.otf",
+              "src/assets/fonts/metropolis/Metropolis-MediumItalic.otf",
+              "src/assets/fonts/metropolis/Metropolis-Regular.otf",
+              "src/assets/fonts/metropolis/Metropolis-RegularItalic.otf",
+              "src/assets/fonts/metropolis/Metropolis-SemiBold.otf",
+              "src/assets/fonts/metropolis/Metropolis-SemiBoldItalic.otf",
+              "src/assets/fonts/metropolis/Metropolis-Thin.otf",
+              "src/assets/fonts/metropolis/Metropolis-ThinItalic.otf",
+              "src/assets/img/illustrations/at-work.svg"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/css/styles.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ng-multiselect-dropdown/themes/ng-multiselect-dropdown.theme.scss"
+            ],
+            "scripts": [
+              "src/js/scripts.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "JoinIT-UI:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "JoinIT-UI:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "JoinIT-UI:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "./node_modules/file-saver/src/FileSaver.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "JoinIT-UI:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "JoinIT-UI:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "JoinIT-UI"
+}

@@ -1,0 +1,119 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Main page content-->
+<div class="container mt-4">
+    <ngx-spinner bdOpacity=0.5 bdColor="rgba(51,51,51,0.85)" size="medium" color="#fff" type="line-scale"
+        [fullScreen]="true">
+        <p style="color: white"> Updating user... </p>
+    </ngx-spinner>
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card">
+                <div class="card-header">Profile Picture</div>
+                <div class="card-body text-center">
+                    <!-- Profile picture image-->
+                    <img class="img-fluid rounded-circle mb-2" style="size: 50%;" src="assets/img/default-avatar.png"
+                        alt="" *ngIf="!pic" />
+
+                    <img src="data:image/jpeg;base64,{{pic}}" class="img-fluid rounded-circle mb-2" *ngIf="pic">
+
+                    <img class="img-fluid rounded-circle mb-2" [src]="imgURL" *ngIf="imgURL">
+                    <!-- Profile picture help block-->
+                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 2 MB</div>
+                    <!-- Profile picture upload button-->
+                    <!-- <button class="btn btn-primary" type="button">Upload new image</button> -->
+                    <input style="visibility: hidden;" type="file" name="file" id="file"
+                        (change)="onFileChanged($event)">
+                    <button class="btn btn-primary" ng (click)="clickLabel()" type="button"><label id="add"
+                            for="file"></label>Click to
+                        choose a file</button>
+                </div>
+
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-header">View Comments</div>
+                <div class="card-body text-center">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="comments">Browse Comments</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Comments about your company</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Current Comment</label>
+                                            <textarea class="form-control" type="text"  [(ngModel)]='comment' [ngModelOptions]="{standalone: true}" required disabled></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" type="button" id="closeButton" data-dismiss="modal">Close</button>
+                                            <button class="btn btn-primary" type="button" (click)="viewComment()">Next</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <form [formGroup]="updateForm">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Company Name</label>
+                            <input disabled class="form-control" [(ngModel)]="name" type="text"
+                                [ngModelOptions]="{standalone: true}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">First Name</label>
+                            <input class="form-control" [(ngModel)]="firstName" type="text"
+                                [ngModelOptions]="{standalone: true}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Last Name</label>
+                            <input class="form-control" [(ngModel)]="surname" type="text"
+                                [ngModelOptions]="{standalone: true}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Email</label>
+                            <input class="form-control" [(ngModel)]="email" type="text"
+                                [ngModelOptions]="{standalone: true}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Phone Number</label>
+                            <input class="form-control" [(ngModel)]="phoneNumber" type="text"
+                                [ngModelOptions]="{standalone: true}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Password</label>
+                            <input class="form-control" [(ngModel)]="password" type="password" minlength="6"
+                                [ngModelOptions]="{standalone: true}" required>
+                        </div>
+                        <br>
+                        <button class="btn btn-outline-primary" (click)="updateUser()">
+                            <i class="far fa-save"></i>&nbsp;&nbsp; Save Changes
+                        </button>
+                        <button class="btn btn-outline-danger" style="float: right" (click)="deleteAccount()">
+                            <i class="fas fa-user-alt-slash"></i>&nbsp;&nbsp;
+                            Delete
+                            account
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

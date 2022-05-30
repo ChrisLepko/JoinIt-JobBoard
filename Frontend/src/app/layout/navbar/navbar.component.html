@@ -1,0 +1,66 @@
+<!-- Navbar-->
+<nav class="navbar navbar-marketing navbar-expand-lg bg-primary navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-white" routerLink="/board">JoinIT</a><button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i-feather name="menu" style="align-items: center; margin-left: 8px;"></i-feather>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mr-lg-5">
+                <a class="btn font-weight-500 ml-lg-4 btn-teal mr-4" routerLink="/form" *ngIf="IsUserLoggedIn()">Post
+                    your job offer!</a>
+                <a class="btn font-weight-500 ml-lg-4 btn-teal mr-4" routerLink="/login" *ngIf="!IsUserLoggedIn()">Post
+                    your job offer!</a>
+                <!-- User Dropdown-->
+                <li class="nav-item dropdown no-caret mr-3 mr-lg-0 dropdown-user" *ngIf="IsUserLoggedIn()">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
+                        href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"><img class="img-fluid" src="assets/img/default-avatar.png" *ngIf="!pic" />
+                        <img class="img-fluid" src="data:image/jpeg;base64,{{pic}}" *ngIf="pic" /></a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
+                        aria-labelledby="navbarDropdownUserImage">
+                        <h6 class="dropdown-header d-flex align-items-center">
+                            <img class="dropdown-user-img" src="assets/img/default-avatar.png" *ngIf="!pic" />
+                            <img class="dropdown-user-img" src="data:image/jpeg;base64,{{pic}}" *ngIf="pic" />
+                            <div class="dropdown-user-details">
+                                <div class="dropdown-user-details-name">{{ name }}</div>
+                                <div class="dropdown-user-details-email">{{ email }}</div>
+                            </div>
+                        </h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLink="/profile">
+                            <div class="dropdown-item-icon">
+                                <i-feather name="settings">
+                                </i-feather>
+                            </div>
+                            Account
+                        </a>
+                        <a class="dropdown-item" routerLink="/my-postings">
+                            <div class="dropdown-item-icon">
+                                <i-feather name="list">
+                                </i-feather>
+                            </div>
+                            My Postings
+                        </a>
+                        <a class="dropdown-item" routerLink="/applicants">
+                            <div class="dropdown-item-icon">
+                                <i-feather name="users">
+                                </i-feather>
+                            </div>
+                            Applicants
+                        </a>
+                        <hr class="my-0 mt-2 mb-2" />
+                        <a class="dropdown-item" (click)="logout()">
+                            <div class="dropdown-item-icon">
+                                <i-feather name="log-out">
+                                </i-feather>
+                            </div>
+                            Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

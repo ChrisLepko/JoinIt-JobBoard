@@ -1,0 +1,96 @@
+<section class="bg-white py-10">
+    <div style="position: relative;">
+        <ngx-spinner bdOpacity=0.5 bdColor="rgba(51,51,51,0.85)" size="medium" color="#fff" type="line-scale"
+            [fullScreen]="true">
+            <p style="color: white"> Opening connection to our database... </p>
+        </ngx-spinner>
+    </div>
+    <div class="container mt-10">
+        <div class="row">
+            <div class="col-lg-3">
+                <ul class="list-group list-group-flush list-group-careers">
+                    <li class="list-group-item pt-0">
+                        <a class="small" routerLink="/board"><i class="fas fa-arrow-left mr-1"></i>Back to
+                            Careers</a>
+                    </li>
+                    <li class="list-group-item">{{ posting.localization }}<i
+                            class="fas fa-globe fa-fw text-gray-400"></i></li>
+                    <li class="list-group-item">Full Time<i class="fas fa-clock fa-fw text-gray-400"></i></li>
+                    <li class="list-group-item">{{ posting.postingCategory }}<i
+                            class="fas fa-code fa-fw text-gray-400"></i></li>
+                    <li class="list-group-item">
+                        <button class="btn btn-outline-primary rounded-0" data-toggle="modal" data-target="#exampleModalCenter">Leave us a comment</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Leave us a comment</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlInput1">Your Comment</label>
+                                                <textarea class="form-control" type="text"  [(ngModel)]='comment' [ngModelOptions]="{standalone: true}" required></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" id="closeButton" data-dismiss="modal">Close</button>
+                                                <button class="btn btn-primary" type="submit">Send</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-8">
+                <h1 class="mb-4">{{ posting.positionName }}</h1>
+                <p class="lead mb-4" style="white-space: pre-line;"> {{posting.description}} </p>
+                <div class="card bg-light shadow-none">
+                    <div class="card-body d-flex align-items-center justify-content-between p-4">
+                        <form [formGroup]="applyForm">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="exampleFormControlInput1">First and last name</label>
+                                    <input class="form-control" id="exampleFormControlInput1" type="email"
+                                        placeholder="First name" formControlName="firstAndLastName">
+                                </div>
+                                <div class="col">
+                                    <label for="exampleFormControlInput1">Email</label>
+                                    <input class="form-control" id="exampleFormControlInput1" type="email"
+                                        placeholder="Your email" formControlName="email">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="exampleFormControlInput1">Introduce yourself</label>
+                                    <textarea class="form-control" id="exampleFormControlInput1" type="textarea"
+                                        rows="3" placeholder=" Introduce yourself (Github, LinkedIn, etc.)"
+                                        formControlName="introduction"></textarea>
+                                </div>
+                                <div class="col">
+                                    <label for="exampleFormControlInput1">Upload PDF</label>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Upload your CV</mat-label>
+                                        <ngx-mat-file-input formControlName="pdfFile"
+                                            placeholder="Upload your CV in .PDF" [accept]="'.pdf'"
+                                            (change)="onFileChanged($event)">
+                                        </ngx-mat-file-input>
+                                        <mat-icon matSuffix>folder</mat-icon>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <input type="checkbox" [checked]="savePdf" (change)="savePdf = !savePdf"/>
+                            <label style="margin-left: 10px;" for="exampleFormControlInput1">I agree to save my CV in our database for purpose of future recruitment processes</label>
+                        </form>
+                    </div>
+                    <button id="applyButton" class="btn btn-primary rounded-0 font-weight-500" style="width: 100%;"
+                        (click)="sendEmail()">Apply Now</button>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
