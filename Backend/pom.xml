@@ -50,59 +50,49 @@
       <groupId>org.springframework.boot</groupId>  
       <artifactId>spring-boot-starter-test</artifactId>  
       <scope>test</scope> 
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-mail</artifactId>
-      <version>2.2.5.RELEASE</version>
-    </dependency>
-
-    <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-boot-starter</artifactId>
-      <version>3.0.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.azure.spring</groupId>
-      <artifactId>azure-spring-boot-starter-storage</artifactId>
-      <version>3.4.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure-storage-blob</artifactId>
-      <version>11.0.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure-storage</artifactId>
-      <version>8.6.4</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-core</artifactId>
-      <version>1.13.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-messaging-servicebus</artifactId>
-      <version>7.0.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-storage-queue</artifactId>
-      <version>12.9.1</version>
-    </dependency>
-
-
-  </dependencies>
-
-  <build>
+    </dependency>  
+    <dependency> 
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-starter-mail</artifactId>  
+      <version>2.2.5.RELEASE</version> 
+    </dependency>  
+    <dependency> 
+      <groupId>io.springfox</groupId>  
+      <artifactId>springfox-boot-starter</artifactId>  
+      <version>3.0.0</version> 
+    </dependency>  
+    <dependency> 
+      <groupId>com.azure.spring</groupId>  
+      <artifactId>azure-spring-boot-starter-storage</artifactId>  
+      <version>3.4.0</version> 
+    </dependency>  
+    <dependency> 
+      <groupId>com.microsoft.azure</groupId>  
+      <artifactId>azure-storage-blob</artifactId>  
+      <version>11.0.1</version> 
+    </dependency>  
+    <dependency> 
+      <groupId>com.microsoft.azure</groupId>  
+      <artifactId>azure-storage</artifactId>  
+      <version>8.6.4</version> 
+    </dependency>  
+    <dependency> 
+      <groupId>com.azure</groupId>  
+      <artifactId>azure-core</artifactId>  
+      <version>1.13.0</version> 
+    </dependency>  
+    <dependency> 
+      <groupId>com.azure</groupId>  
+      <artifactId>azure-messaging-servicebus</artifactId>  
+      <version>7.0.2</version> 
+    </dependency>  
+    <dependency> 
+      <groupId>com.azure</groupId>  
+      <artifactId>azure-storage-queue</artifactId>  
+      <version>12.9.1</version> 
+    </dependency> 
+  </dependencies>  
+  <build> 
     <plugins> 
       <plugin> 
         <groupId>org.springframework.boot</groupId>  
@@ -112,28 +102,28 @@
         <groupId>com.microsoft.azure</groupId>  
         <artifactId>azure-webapp-maven-plugin</artifactId>  
         <version>1.9.1</version>  
-        <configuration>
-          <schemaVersion>V2</schemaVersion>
-          <resourceGroup>joinIT</resourceGroup>
-          <appName>JoinItwebsite</appName>
-          <pricingTier>B1</pricingTier>
-          <region>westeurope</region>
-          <runtime>
-            <os>linux</os>
-            <javaVersion>jre8</javaVersion>
-            <webContainer>jre8</webContainer>
-          </runtime>
-          <deployment>
-            <resources>
-              <resource>
-                <directory>${project.basedir}/target</directory>
-                <includes>
-                  <include>*.jar</include>
-                </includes>
-              </resource>
-            </resources>
-          </deployment>
-        </configuration>
+        <configuration> 
+          <schemaVersion>V2</schemaVersion>  
+          <resourceGroup>jointIT</resourceGroup>  
+          <appName>JointItAPI-qwertyzaqwert</appName>  
+          <pricingTier>B1</pricingTier>  
+          <region>westeurope</region>  
+          <runtime> 
+            <os>linux</os>  
+            <javaVersion>jre8</javaVersion>  
+            <webContainer>jre8</webContainer> 
+          </runtime>  
+          <deployment> 
+            <resources> 
+              <resource> 
+                <directory>${project.basedir}/target</directory>  
+                <includes> 
+                  <include>*.jar</include> 
+                </includes> 
+              </resource> 
+            </resources> 
+          </deployment> 
+        </configuration> 
       </plugin> 
     </plugins> 
   </build> 

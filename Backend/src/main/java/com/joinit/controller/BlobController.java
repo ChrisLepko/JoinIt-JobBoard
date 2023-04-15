@@ -30,7 +30,7 @@ public class BlobController {
     @Autowired
     private ApplicantsDao applicantsDao;
 
-    @Value("DefaultEndpointsProtocol=https;AccountName=joinitstoragetest;AccountKey=pfRQO6sXIqdBEY++tJ/Xt1FJh7zQ36J52u9j+e8nttfL39i/Ji0y30VClWF35QtWPk48QJTlqC71qVKM6WnL8A==;EndpointSuffix=core.windows.net")
+    @Value("DefaultEndpointsProtocol=https;AccountName=jointitstorage;AccountKey=ahgm285mIqNX9NRjQWLUNPNM3WhTtjGboydpY5QTr8uR+T4RksEVrqNn2VdpoBuaSar6PKU6JQNr+AStCuhikw==;EndpointSuffix=core.windows.net")
     private String connectionString;
 
     @GetMapping("/readPdfFile")
@@ -39,7 +39,7 @@ public class BlobController {
 
             CloudStorageAccount account = CloudStorageAccount.parse(this.connectionString);
             CloudBlobClient cloudBlobClient = account.createCloudBlobClient();
-            CloudBlobContainer cloudBlobContainer = cloudBlobClient.getContainerReference("joinitcontainer");
+            CloudBlobContainer cloudBlobContainer = cloudBlobClient.getContainerReference("jointitkontener");
             CloudBlockBlob cloudBlockBlob = cloudBlobContainer.getBlockBlobReference(pdfName + " - cv.pdf");
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -62,7 +62,7 @@ public class BlobController {
         try{
             CloudStorageAccount account = CloudStorageAccount.parse(this.connectionString);
             CloudBlobClient cloudBlobClient = account.createCloudBlobClient();
-            CloudBlobContainer cloudBlobContainer = cloudBlobClient.getContainerReference("joinitcontainer");
+            CloudBlobContainer cloudBlobContainer = cloudBlobClient.getContainerReference("jointitkontener");
             CloudBlockBlob cloudBlockBlob = cloudBlobContainer.getBlockBlobReference(pdfName + " - cv.pdf");
             cloudBlockBlob.uploadFromByteArray(pdf.getBytes(), 0, (int) pdf.getSize());
 

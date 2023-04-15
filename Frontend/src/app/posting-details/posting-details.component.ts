@@ -7,6 +7,7 @@ import { PostingService } from '../service/posting.service';
 import { MailService } from '../service/mail.service';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
+import { ApplicantsService } from '../service/applicants.service';
 
 @Component({
   selector: 'app-posting-details',
@@ -30,6 +31,7 @@ export class PostingDetailsComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private route: ActivatedRoute,
     private mailService: MailService,
+    private applicantService: ApplicantsService,
     private toastr: ToastrService,
     private router: Router) { }
 
@@ -142,58 +144,59 @@ export class PostingDetailsComponent implements OnInit {
     }
     else {
       this.loading = true;
-      this.mailService.sendEmail(formData, this.posting.email, this.f.email.value, this.f.firstAndLastName.value, this.f.introduction.value, this.posting.companyName,
-        this.posting.localization, this.posting.positionName)
-        .pipe(first())
-        .subscribe(
-          data => {
+      // this.mailService.sendEmail(formData, this.posting.email, this.f.email.value, this.f.firstAndLastName.value, this.f.introduction.value, this.posting.companyName,
+      //   this.posting.localization, this.posting.positionName)
+      //   .pipe(first())
+      //   .subscribe(
+      //     data => {
 
-            if(this.savePdf){
-              this.mailService.uploadPdfToDatabase(formData, this.f.email.value, this.posting.email, this.f.firstAndLastName.value).pipe(first()).subscribe(
-                pdfData => {
+
+      //     },
+      //     error => {
+      //       this.toastr.error(error);
+      //     });
+      if(this.savePdf){
+        this.applicantService.uploadPdfToDatabase(formData, this.f.email.value, this.posting.email, this.f.firstAndLastName.value).pipe(first()).subscribe(
+          pdfData => {
+            this.toastr.success('Success!');
+            setTimeout(() => {
+              this.router.navigate(['/board']);
+            }, 1000)
+          },
+          error => {
+            if(error.status == 200){
+              this.mailService.getQueueMessage().subscribe(
+                messageData => {
+                  console.log("DUPA")
+                  console.log(messageData);
                   this.toastr.success('Success!');
                   setTimeout(() => {
                     this.router.navigate(['/board']);
                   }, 1000)
                 },
-                error => {
+                error =>{
                   if(error.status == 200){
-                    this.mailService.getQueueMessage().subscribe(
-                      messageData => {
-                        console.log("DUPA")
-                        console.log(messageData);
-                        this.toastr.success('Success!');
-                        setTimeout(() => {
-                          this.router.navigate(['/board']);
-                        }, 1000)
-                      },
-                      error =>{
-                        if(error.status == 200){
-                          console.log(error.error.text);
-                          this.toastr.success('Application sent!');
-                          setTimeout(() => {
-                            this.router.navigate(['/board']);
-                          }, 1500)
-                        }else{
-                          this.toastr.error(error);
-                        }
-                      }
-                    )
+                    console.log(error.error.text);
+                    this.toastr.success('Application sent!');
+                    setTimeout(() => {
+                      this.router.navigate(['/board']);
+                    }, 1500)
                   }else{
                     this.toastr.error(error);
                   }
                 }
               )
-            } else {
-              this.toastr.success('Success!');
-              setTimeout(() => {
-                this.router.navigate(['/board']);
-              }, 1000)
+            }else{
+              this.toastr.error(error);
             }
-          },
-          error => {
-            this.toastr.error(error);
-          });
+          }
+        )
+      } else {
+        this.toastr.success('Success!');
+        setTimeout(() => {
+          this.router.navigate(['/board']);
+        }, 1000)
+      }
     }
   }
 }

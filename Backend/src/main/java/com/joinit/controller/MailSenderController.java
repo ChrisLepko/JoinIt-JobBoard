@@ -28,10 +28,10 @@ public class MailSenderController {
     @Autowired
     private EmailServiceImpl emailService;
 
-    @Value("Endpoint=sb://joinittest.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=b9Ii+A5nPXm/FcQN5hX5cYH5VuCVX+zQfxCbaB4swGA=")
+    @Value("Endpoint=sb://jointit.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=8RJaVt6ZALRST2+ukb+BkkLOvfDwGud1i+ASbKsOnSo=")
     private String connectionString;
 
-    @Value("queue-joinit")
+    @Value("jointit")
     private String queueName;
 
     @PostMapping(path = "/send")

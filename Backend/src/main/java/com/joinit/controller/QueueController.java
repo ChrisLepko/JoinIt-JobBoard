@@ -20,7 +20,7 @@ import java.util.Base64;
 @RequestMapping("managequeues")
 public class QueueController {
 
-    @Value("DefaultEndpointsProtocol=https;AccountName=joinitstoragetest;AccountKey=pfRQO6sXIqdBEY++tJ/Xt1FJh7zQ36J52u9j+e8nttfL39i/Ji0y30VClWF35QtWPk48QJTlqC71qVKM6WnL8A==;EndpointSuffix=core.windows.net")
+    @Value("DefaultEndpointsProtocol=https;AccountName=jointitstorage;AccountKey=ahgm285mIqNX9NRjQWLUNPNM3WhTtjGboydpY5QTr8uR+T4RksEVrqNn2VdpoBuaSar6PKU6JQNr+AStCuhikw==;EndpointSuffix=core.windows.net")
     private String connectionString;
 
 
